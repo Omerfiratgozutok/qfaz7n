@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Knowledgebase – Hakkımda</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Basquiat esintili fontlar -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=Special+Elite&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #050814;
+      --paper: #f8f2e7;
+      --ink: #111111;
+      --blue: #1f76ff;
+      --yellow: #ffc928;
+      --red: #ff3b3b;
+      --turquoise: #18b5a4;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    body {
+      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255, 201, 40, 0.16), transparent 55%),
+        radial-gradient(circle at 80% 80%, rgba(31, 118, 255, 0.25), transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(255, 59, 59, 0.20), transparent 55%),
+        var(--bg-dark);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+      padding: 32px 18px;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 1200px;
+      min-height: calc(100vh - 64px);
+      display: grid;
+      grid-template-columns: 280px minmax(0, 1fr);
+      background: transparent;
+      position: relative;
+      border: 3px solid var(--ink);
+      box-shadow:
+        0 0 0 3px var(--yellow),
+        10px 10px 0 0 var(--blue);
+      overflow: hidden;
+    }
+
+    .page::before {
+      /* Basquiat tarzı rastgele çizgiler */
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        repeating-linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 40px,
+          rgba(0,0,0,0.05) 40px,
+          rgba(0,0,0,0.05) 41px
+        ),
+        repeating-linear-gradient(
+          180deg,
+          transparent 0,
+          transparent 30px,
+          rgba(0,0,0,0.03) 30px,
+          rgba(0,0,0,0.03) 31px
+        );
+      mix-blend-mode: multiply;
+      opacity: 0.6;
+    }
+
+    /* SOL SİDEBAR */
+
+    .sidebar {
+      position: relative;
+      background: #fdf7e8;
+      border-right: 3px solid var(--ink);
+      padding: 28px 22px 24px;
+      z-index: 1;
+    }
+
+    .sidebar::before {
+      /* Kenarda kalın siyah çizgi + sarı blok */
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 10px;
+      height: 100%;
+      background:
+        repeating-linear-gradient(
+          180deg,
+          var(--ink) 0,
+          var(--ink) 16px,
+          transparent 16px,
+          transparent 26px
+        );
+      opacity: 0.85;
+    }
+
+    .logo {
+      font-family: "Special Elite", monospace;
+      letter-spacing: 0.18em;
+      font-size: 14px;
+      text-transform: uppercase;
+      margin-left: 14px;
+      margin-bottom: 26px;
+      border-bottom: 2px solid var(--ink);
+      padding-bottom: 6px;
+    }
+
+    .nav-section {
+      margin-bottom: 22px;
+      margin-left: 14px;
+    }
+
+    .nav-section-title {
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #555;
+      margin-bottom: 8px;
+      position: relative;
+    }
+
+    .nav-section-title::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -4px;
+      height: 1px;
+      background-image: linear-gradient(90deg, var(--ink) 0, var(--ink) 40%, transparent 40%, transparent 60%, var(--ink) 60%);
+      opacity: 0.75;
+    }
+
+    .nav-list {
+      list-style: none;
+      margin: 12px 0 0;
+      padding: 0;
+      font-size: 13px;
+    }
+
+    .nav-item {
+      margin-bottom: 6px;
+    }
+
+    .nav-link {
+      text-decoration: none;
+      color: var(--ink);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 4px;
+      border-radius: 3px;
+      position: relative;
+    }
+
+    .nav-link::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      border: 1px solid var(--ink);
+      background: #fff;
+    }
+
+    .nav-link:hover {
+      background: rgba(24, 181, 164, 0.18);
+      transform: translateX(2px);
+    }
+
+    .nav-link.active {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: -4px 0 0 var(--yellow);
+    }
+
+    .nav-link.active::before {
+      background: var(--yellow);
+      border-color: #000;
+    }
+
+    .sidebar-footer {
+      position: absolute;
+      bottom: 16px;
+      left: 28px;
+      right: 18px;
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #444;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .sidebar-footer span:nth-child(2) {
+      background: var(--yellow);
+      padding: 3px 6px;
+      border: 1px solid var(--ink);
+      box-shadow: 2px 2px 0 var(--red);
+      font-family: "Special Elite", monospace;
+    }
+
+    /* SAĞ İÇERİK ALANI */
+
+    .content {
+      position: relative;
+      background: var(--paper);
+      padding: 32px 40px;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .content-inner {
+      position: relative;
+      max-width: 780px;
+      margin: 0 auto;
+      background: #fdfaf4;
+      border: 2px solid var(--ink);
+      box-shadow:
+        6px 6px 0 rgba(0, 0, 0, 0.4),
+        -2px -2px 0 rgba(255, 201, 40, 0.8);
+      padding: 36px 40px 44px;
+    }
+
+    .file-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .file-meta {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+    }
+
+    .file-meta-label {
+      color: #777;
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .file-meta-value {
+      font-family: "Special Elite", monospace;
+      font-size: 12px;
+    }
+
+    .stamp {
+      position: absolute;
+      right: 20px;
+      top: -6px;
+      padding: 6px 14px;
+      border: 2px solid var(--red);
+      color: var(--red);
+      font-family: "Special Elite", monospace;
+      font-size: 14px;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      transform: rotate(-16deg);
+      background: rgba(255, 255, 255, 0.8);
+      box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
+      mix-blend-mode: multiply;
+    }
+
+    .about {
+      font-size: 14px;
+      line-height: 1.8;
+      color: #222;
+      position: relative;
+    }
+
+    .about::before {
+      /* Yazı alanının solunda renkli çizgi */
+      content: "";
+      position: absolute;
+      left: -26px;
+      top: 0;
+      bottom: 0;
+      width: 10px;
+      background:
+        linear-gradient(var(--blue), var(--blue)) 0 0/100% 6px no-repeat,
+        linear-gradient(var(--yellow), var(--yellow)) 0 14px/100% 10px no-repeat,
+        linear-gradient(var(--red), var(--red)) 0 32px/100% 8px no-repeat,
+        linear-gradient(var(--turquoise), var(--turquoise)) 0 48px/100% 16px no-repeat;
+      opacity: 0.92;
+    }
+
+    .about p {
+      margin: 0 0 16px;
+    }
+
+    .about p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about strong {
+      font-weight: 600;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 900px) {
+      body {
+        padding: 18px 10px;
+      }
+
+      .page {
+        grid-template-columns: 1fr;
+        box-shadow:
+          0 0 0 3px var(--yellow),
+          6px 6px 0 0 var(--blue);
+      }
+
+      .sidebar {
+        padding-right: 18px;
+      }
+
+      .sidebar-footer {
+        position: static;
+        margin-top: 18px;
+      }
+
+      .content {
+        padding: 24px 18px 32px;
+      }
+
+      .content-inner {
+        padding: 26px 20px 30px;
+      }
+
+      .about::before {
+        display: none;
+      }
+
+      .stamp {
+        position: static;
+        transform: rotate(-10deg);
+        margin-left: auto;
+        margin-top: -8px;
+        margin-bottom: 18px;
+      }
+
+      .file-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .logo {
+        font-size: 12px;
+      }
+
+      .nav-section {
+        margin-left: 4px;
+      }
+
+      .page {
+        border-width: 2px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- SOL NAVİGASYON -->
+    <aside class="sidebar">
+      <div class="logo">KNOWLEDGEBASE</div>
+
+      <div class="nav-section">
+        <div class="nav-section-title">Navigation</div>
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#" class="nav-link">Home</a>
+          </li>
+          <li class="nav-item">
+            <a href="#" class="nav-link active">Hakkımda</a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-section-title">Computer Science</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#" class="nav-link">Kanıt Nedir?</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Mantıksal Çıkarımlar</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">'If and Only If'</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-section-title">Mathematics</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#" class="nav-link">Graf Teorisi</a></li>
+          <li class="nav-item"><a href="#" class="nav-link">Bağlantılılık</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-section">
+        <div class="nav-section-title">Security</div>
+        <ul class="nav-list">
+          <li class="nav-item"><a href="#" class="nav-link">The Glass Box</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-footer">
+        <span>EST. 2025</span>
+        <span>ARCHIVE</span>
+      </div>
+    </aside>
+
+    <!-- SAĞ İÇERİK -->
+    <main class="content">
+      <div class="content-inner">
+        <header class="file-header">
+          <div class="file-meta">
+            <span class="file-meta-label">FILE NO.</span>
+            <span class="file-meta-value">Hakkımda</span>
+          </div>
+          <div class="stamp">ARCHIVED</div>
+        </header>
+
+        <article class="about">
+          <p>
+            Merhaba, buraya yolun düştüyse muhtemelen sadece yazdığım kodları
+            değil, satırların arkasındaki düşünceyi ve sezgiyi de merak ediyorsundur.
+          </p>
+
+          <p>
+            Ben bir <strong>Bilgisayar Mühendisiyim</strong>. Günlerimin büyük kısmı
+            pratik problemlere çözümler üretmekle geçse de, beni asıl motive eden şey
+            teorinin, matematiğin ve soyut sistemlerin arkasındaki fikri anlamak.
+          </p>
+
+          <p>
+            Bir sistemin sadece <em>"nasıl"</em> çalıştığını bilmek bana yetmiyor;
+            neden öyle kurulduğunu, arkasındaki ispatı ve mantıksal çerçeveyi görmek
+            istiyorum. Sektörel kalıpların dışına taşıp, biraz da akademik derinlik
+            peşinde koşuyorum.
+          </p>
+
+          <p>
+            Burada paylaşacağım notlar; teknik açıklamaların, dağınık eskizlerin
+            ve bazen de Basquiat tablolarından fırlamış gibi duran fikir parçalarının
+            bir karışımı olacak. Eğer sen de öğrenmekten keyif alıyorsan, muhtemelen
+            doğru yerdesin.
+          </p>
+        </article>
+      </div>
+    </main>
+  </div>
+</body>
+</html>
+
+
+create about page
