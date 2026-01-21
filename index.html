@@ -1,388 +1,398 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <title>Knowledgebase – Hakkımda</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <title>Knowledgebase</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Basquiat esintili fontlar -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=Special+Elite&display=swap" rel="stylesheet">
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600&family=Special+Elite&display=swap" rel="stylesheet" />
 
   <style>
-    :root {
-      --bg-dark: #050814;
-      --paper: #f8f2e7;
-      --ink: #111111;
-      --blue: #1f76ff;
-      --yellow: #ffc928;
-      --red: #ff3b3b;
-      --turquoise: #18b5a4;
+    :root{
+      --bg-dark: #0b0e14;
+      --paper: #121621;
+      --paper-2: #0f1420;
+      --ink: #eaeaf0;
+      --muted: rgba(234,234,240,.72);
+      --blue: #4da3ff;
+      --yellow: #ffd166;
+      --red: #ff5c5c;
+      --turquoise: #2dd4bf;
+      --border: rgba(234,234,240,.18);
+      --shadow: rgba(0,0,0,.55);
     }
 
-    * {
-      box-sizing: border-box;
+    *{ box-sizing:border-box; }
+
+    html,body{
+      margin:0; padding:0; height:100%;
+      background: var(--bg-dark);
     }
 
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-    }
-
-    body {
-      font-family: "Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    body{
+      font-family:"Space Grotesk", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       background:
-        radial-gradient(circle at 10% 10%, rgba(255, 201, 40, 0.16), transparent 55%),
-        radial-gradient(circle at 80% 80%, rgba(31, 118, 255, 0.25), transparent 60%),
-        radial-gradient(circle at 20% 80%, rgba(255, 59, 59, 0.20), transparent 55%),
+        radial-gradient(circle at 10% 10%, rgba(255, 209, 102, 0.10), transparent 55%),
+        radial-gradient(circle at 80% 80%, rgba(77, 163, 255, 0.18), transparent 60%),
+        radial-gradient(circle at 20% 80%, rgba(255, 92, 92, 0.14), transparent 55%),
         var(--bg-dark);
       color: var(--ink);
       min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: stretch;
-      padding: 32px 18px;
+      display:flex;
+      justify-content:center;
+      align-items:stretch;
+      padding:32px 18px;
     }
 
-    .page {
-      width: 100%;
-      max-width: 1200px;
-      min-height: calc(100vh - 64px);
-      display: grid;
+    .page{
+      width:100%;
+      max-width:1200px;
+      min-height:calc(100vh - 64px);
+      display:grid;
       grid-template-columns: 280px minmax(0, 1fr);
-      background: transparent;
-      position: relative;
-      border: 3px solid var(--ink);
+      position:relative;
+      border: 2px solid rgba(234,234,240,.35);
       box-shadow:
-        0 0 0 3px var(--yellow),
-        10px 10px 0 0 var(--blue);
-      overflow: hidden;
+        0 0 0 3px rgba(255, 209, 102, .35),
+        10px 10px 0 0 rgba(77, 163, 255, .35);
+      overflow:hidden;
+      border-radius: 10px;
+      backdrop-filter: blur(4px);
     }
 
-    .page::before {
-      /* Basquiat tarzı rastgele çizgiler */
-      content: "";
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
+    .page::before{
+      content:"";
+      position:absolute; inset:0;
+      pointer-events:none;
       background-image:
         repeating-linear-gradient(
           90deg,
           transparent 0,
           transparent 40px,
-          rgba(0,0,0,0.05) 40px,
-          rgba(0,0,0,0.05) 41px
+          rgba(255,255,255,0.035) 40px,
+          rgba(255,255,255,0.035) 41px
         ),
         repeating-linear-gradient(
           180deg,
           transparent 0,
           transparent 30px,
-          rgba(0,0,0,0.03) 30px,
-          rgba(0,0,0,0.03) 31px
+          rgba(255,255,255,0.02) 30px,
+          rgba(255,255,255,0.02) 31px
         );
-      mix-blend-mode: multiply;
-      opacity: 0.6;
+      opacity:.7;
+      mix-blend-mode: screen;
     }
 
-    /* SOL SİDEBAR */
-
-    .sidebar {
-      position: relative;
-      background: #fdf7e8;
-      border-right: 3px solid var(--ink);
+    /* SIDEBAR */
+    .sidebar{
+      position:relative;
+      background: linear-gradient(180deg, #0f1320 0%, #0b0e14 100%);
+      border-right: 1px solid var(--border);
       padding: 28px 22px 24px;
-      z-index: 1;
+      z-index:1;
     }
 
-    .sidebar::before {
-      /* Kenarda kalın siyah çizgi + sarı blok */
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 10px;
-      height: 100%;
+    .sidebar::before{
+      content:"";
+      position:absolute; top:0; left:0;
+      width:10px; height:100%;
       background:
         repeating-linear-gradient(
           180deg,
-          var(--ink) 0,
-          var(--ink) 16px,
+          rgba(234,234,240,.9) 0,
+          rgba(234,234,240,.9) 16px,
           transparent 16px,
           transparent 26px
         );
-      opacity: 0.85;
+      opacity: .25;
     }
 
-    .logo {
-      font-family: "Special Elite", monospace;
-      letter-spacing: 0.18em;
-      font-size: 14px;
-      text-transform: uppercase;
+    .logo{
+      font-family:"Special Elite", monospace;
+      letter-spacing:.18em;
+      font-size:14px;
+      text-transform:uppercase;
+      margin-left:14px;
+      margin-bottom: 18px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(234,234,240,.28);
+      color: rgba(234,234,240,.92);
+    }
+
+    .nav-section{
+      margin-bottom: 18px;
       margin-left: 14px;
-      margin-bottom: 26px;
-      border-bottom: 2px solid var(--ink);
-      padding-bottom: 6px;
     }
 
-    .nav-section {
-      margin-bottom: 22px;
-      margin-left: 14px;
+    .nav-section-title{
+      font-size:10px;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      color: rgba(234,234,240,.6);
+      margin-bottom: 10px;
+      position:relative;
     }
 
-    .nav-section-title {
-      font-size: 10px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #555;
-      margin-bottom: 8px;
-      position: relative;
+    .nav-section-title::after{
+      content:"";
+      position:absolute;
+      left:0; right:0; bottom:-6px;
+      height:1px;
+      background-image: linear-gradient(90deg, rgba(234,234,240,.7) 0, rgba(234,234,240,.7) 40%, transparent 40%, transparent 60%, rgba(234,234,240,.7) 60%);
+      opacity:.45;
     }
 
-    .nav-section-title::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: -4px;
-      height: 1px;
-      background-image: linear-gradient(90deg, var(--ink) 0, var(--ink) 40%, transparent 40%, transparent 60%, var(--ink) 60%);
-      opacity: 0.75;
+    .nav-list{
+      list-style:none;
+      margin: 14px 0 0;
+      padding:0;
+      font-size:13px;
     }
 
-    .nav-list {
-      list-style: none;
-      margin: 12px 0 0;
-      padding: 0;
-      font-size: 13px;
+    .nav-item{ margin-bottom: 6px; }
+
+    .nav-link{
+      text-decoration:none;
+      color: rgba(234,234,240,.86);
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 6px 8px;
+      border-radius: 8px;
+      position:relative;
+      transition: transform .15s ease, background .15s ease, color .15s ease, box-shadow .15s ease;
     }
 
-    .nav-item {
-      margin-bottom: 6px;
-    }
-
-    .nav-link {
-      text-decoration: none;
-      color: var(--ink);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 3px 4px;
-      border-radius: 3px;
-      position: relative;
-    }
-
-    .nav-link::before {
-      content: "";
-      width: 8px;
-      height: 8px;
+    .nav-link::before{
+      content:"";
+      width:8px; height:8px;
       border-radius: 999px;
-      border: 1px solid var(--ink);
-      background: #fff;
+      border: 1px solid rgba(234,234,240,.75);
+      background: transparent;
+      box-shadow: 0 0 0 2px rgba(0,0,0,.25) inset;
+      flex: 0 0 auto;
     }
 
-    .nav-link:hover {
-      background: rgba(24, 181, 164, 0.18);
+    .nav-link:hover{
+      background: rgba(45, 212, 191, 0.12);
       transform: translateX(2px);
+      color: rgba(234,234,240,.95);
     }
 
-    .nav-link.active {
-      background: var(--blue);
+    .nav-link.active{
+      background: rgba(77,163,255,.18);
       color: #fff;
-      box-shadow: -4px 0 0 var(--yellow);
+      box-shadow: -4px 0 0 rgba(255,209,102,.85);
     }
 
-    .nav-link.active::before {
-      background: var(--yellow);
-      border-color: #000;
+    .nav-link.active::before{
+      background: rgba(255,209,102,.95);
+      border-color: rgba(0,0,0,.35);
     }
 
-    .sidebar-footer {
-      position: absolute;
-      bottom: 16px;
-      left: 28px;
-      right: 18px;
-      font-size: 10px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #444;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .sidebar-footer{
+      position:absolute;
+      bottom:16px;
+      left:28px;
+      right:18px;
+      font-size:10px;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      color: rgba(234,234,240,.55);
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
     }
 
-    .sidebar-footer span:nth-child(2) {
-      background: var(--yellow);
-      padding: 3px 6px;
-      border: 1px solid var(--ink);
-      box-shadow: 2px 2px 0 var(--red);
-      font-family: "Special Elite", monospace;
+    .sidebar-footer span:nth-child(2){
+      background: rgba(255,209,102,.9);
+      color:#0b0e14;
+      padding:3px 6px;
+      border: 1px solid rgba(0,0,0,.35);
+      box-shadow: 2px 2px 0 rgba(255, 92, 92, .65);
+      font-family:"Special Elite", monospace;
+      border-radius: 6px;
     }
 
-    /* SAĞ İÇERİK ALANI */
-
-    .content {
-      position: relative;
-      background: var(--paper);
+    /* CONTENT */
+    .content{
+      position:relative;
+      background: radial-gradient(circle at 20% 10%, rgba(255,255,255,0.04), transparent 35%), var(--paper);
       padding: 32px 40px;
-      overflow: hidden;
-      z-index: 1;
+      overflow:hidden;
+      z-index:1;
     }
 
-    .content-inner {
-      position: relative;
-      max-width: 780px;
-      margin: 0 auto;
-      background: #fdfaf4;
-      border: 2px solid var(--ink);
+    .content-inner{
+      position:relative;
+      max-width: 820px;
+      margin:0 auto;
+      background: linear-gradient(180deg, rgba(255,255,255,0.035) 0%, rgba(255,255,255,0.02) 100%), var(--paper-2);
+      border: 1px solid rgba(234,234,240,.22);
       box-shadow:
-        6px 6px 0 rgba(0, 0, 0, 0.4),
-        -2px -2px 0 rgba(255, 201, 40, 0.8);
-      padding: 36px 40px 44px;
+        10px 10px 0 rgba(0,0,0,0.35),
+        -2px -2px 0 rgba(255, 209, 102, 0.25);
+      padding: 30px 34px 34px;
+      border-radius: 14px;
     }
 
-    .file-header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      margin-bottom: 30px;
-      position: relative;
+    .file-header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+      position:relative;
     }
 
-    .file-meta {
-      font-size: 11px;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
+    .file-meta{
+      font-size:11px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color: rgba(234,234,240,.75);
     }
 
-    .file-meta-label {
-      color: #777;
-      display: block;
-      margin-bottom: 6px;
+    .file-meta-label{
+      color: rgba(234,234,240,.45);
+      display:block;
+      margin-bottom:6px;
     }
 
-    .file-meta-value {
-      font-family: "Special Elite", monospace;
-      font-size: 12px;
+    .file-meta-value{
+      font-family:"Special Elite", monospace;
+      font-size:12px;
+      color: rgba(234,234,240,.9);
     }
 
-    .stamp {
-      position: absolute;
-      right: 20px;
-      top: -6px;
+    .stamp{
       padding: 6px 14px;
-      border: 2px solid var(--red);
-      color: var(--red);
-      font-family: "Special Elite", monospace;
+      border: 1px solid rgba(255, 92, 92, .85);
+      color: rgba(255, 92, 92, .9);
+      font-family:"Special Elite", monospace;
       font-size: 14px;
-      letter-spacing: 0.24em;
+      letter-spacing: .24em;
       text-transform: uppercase;
-      transform: rotate(-16deg);
-      background: rgba(255, 255, 255, 0.8);
-      box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3);
-      mix-blend-mode: multiply;
+      transform: rotate(-10deg);
+      background: rgba(0,0,0,0.10);
+      box-shadow: 3px 3px 0 rgba(0,0,0,0.35);
+      border-radius: 10px;
+      align-self: flex-start;
+      white-space: nowrap;
     }
 
-    .about {
-      font-size: 14px;
-      line-height: 1.8;
-      color: #222;
-      position: relative;
+    /* Dynamic page */
+    .content-page{
+      font-size: 15px;
+      line-height: 1.85;
+      color: rgba(234,234,240,.88);
+      position:relative;
+      min-height: 260px;
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity .22s ease, transform .22s ease;
+      padding-left: 18px;
     }
 
-    .about::before {
-      /* Yazı alanının solunda renkli çizgi */
-      content: "";
-      position: absolute;
-      left: -26px;
-      top: 0;
-      bottom: 0;
-      width: 10px;
+    .content-page::before{
+      content:"";
+      position:absolute;
+      left:0;
+      top: 2px;
+      bottom: 2px;
+      width: 8px;
+      border-radius: 99px;
       background:
         linear-gradient(var(--blue), var(--blue)) 0 0/100% 6px no-repeat,
         linear-gradient(var(--yellow), var(--yellow)) 0 14px/100% 10px no-repeat,
         linear-gradient(var(--red), var(--red)) 0 32px/100% 8px no-repeat,
         linear-gradient(var(--turquoise), var(--turquoise)) 0 48px/100% 16px no-repeat;
-      opacity: 0.92;
+      opacity: .9;
     }
 
-    .about p {
-      margin: 0 0 16px;
+    .content-page.is-leaving{
+      opacity: 0;
+      transform: translateY(6px);
     }
 
-    .about p:last-child {
-      margin-bottom: 0;
+    .content-page h2{
+      margin: 0 0 10px;
+      font-size: 24px;
+      letter-spacing: .02em;
+      color: rgba(234,234,240,.96);
     }
 
-    .about strong {
-      font-weight: 600;
+    .content-page h3{
+      margin: 18px 0 10px;
+      font-size: 16px;
+      letter-spacing: .02em;
+      color: rgba(234,234,240,.92);
     }
 
-    /* RESPONSIVE */
+    .content-page p{ margin: 0 0 14px; }
+    .content-page strong{ font-weight: 600; color: #fff; }
+    .content-page em{ color: rgba(255,209,102,.95); font-style: italic; }
+    .content-page code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(234,234,240,.18);
+      padding: 2px 6px;
+      border-radius: 8px;
+      color: rgba(234,234,240,.92);
+    }
 
-    @media (max-width: 900px) {
-      body {
-        padding: 18px 10px;
-      }
+    .chips{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 6px;
+      font-size: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(234,234,240,.18);
+      background: rgba(255,255,255,.03);
+      color: rgba(234,234,240,.82);
+    }
+    .chip::before{
+      content:"";
+      width: 8px; height: 8px;
+      border-radius: 999px;
+      background: rgba(77,163,255,.9);
+      box-shadow: 0 0 0 2px rgba(0,0,0,.25);
+    }
 
-      .page {
+    /* Responsive */
+    @media (max-width: 900px){
+      body{ padding: 18px 10px; }
+      .page{
         grid-template-columns: 1fr;
         box-shadow:
-          0 0 0 3px var(--yellow),
-          6px 6px 0 0 var(--blue);
+          0 0 0 3px rgba(255, 209, 102, .35),
+          6px 6px 0 0 rgba(77, 163, 255, .35);
       }
-
-      .sidebar {
-        padding-right: 18px;
-      }
-
-      .sidebar-footer {
-        position: static;
-        margin-top: 18px;
-      }
-
-      .content {
-        padding: 24px 18px 32px;
-      }
-
-      .content-inner {
-        padding: 26px 20px 30px;
-      }
-
-      .about::before {
-        display: none;
-      }
-
-      .stamp {
-        position: static;
-        transform: rotate(-10deg);
-        margin-left: auto;
-        margin-top: -8px;
-        margin-bottom: 18px;
-      }
-
-      .file-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
+      .sidebar{ padding-right: 18px; }
+      .sidebar-footer{ position: static; margin-top: 18px; }
+      .content{ padding: 22px 16px 28px; }
+      .content-inner{ padding: 22px 18px 24px; }
     }
 
-    @media (max-width: 600px) {
-      .logo {
-        font-size: 12px;
-      }
-
-      .nav-section {
-        margin-left: 4px;
-      }
-
-      .page {
-        border-width: 2px;
-      }
+    @media (max-width: 600px){
+      .logo{ font-size: 12px; }
+      .nav-section{ margin-left: 4px; }
+      .page{ border-width: 1px; border-radius: 12px; }
+      .content-page{ padding-left: 14px; }
+      .content-page h2{ font-size: 20px; }
     }
   </style>
 </head>
+
 <body>
   <div class="page">
     <!-- SOL NAVİGASYON -->
@@ -393,10 +403,10 @@
         <div class="nav-section-title">Navigation</div>
         <ul class="nav-list">
           <li class="nav-item">
-            <a href="#" class="nav-link">Home</a>
+            <a href="#home" class="nav-link" data-page="home">Home</a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">Hakkımda</a>
+            <a href="#about" class="nav-link" data-page="about">Hakkımda</a>
           </li>
         </ul>
       </div>
@@ -404,24 +414,24 @@
       <div class="nav-section">
         <div class="nav-section-title">Computer Science</div>
         <ul class="nav-list">
-          <li class="nav-item"><a href="#" class="nav-link">Kanıt Nedir?</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Mantıksal Çıkarımlar</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">'If and Only If'</a></li>
+          <li class="nav-item"><a href="#proof" class="nav-link" data-page="proof">Kanıt Nedir?</a></li>
+          <li class="nav-item"><a href="#inference" class="nav-link" data-page="inference">Mantıksal Çıkarımlar</a></li>
+          <li class="nav-item"><a href="#iff" class="nav-link" data-page="iff">'If and Only If'</a></li>
         </ul>
       </div>
 
       <div class="nav-section">
         <div class="nav-section-title">Mathematics</div>
         <ul class="nav-list">
-          <li class="nav-item"><a href="#" class="nav-link">Graf Teorisi</a></li>
-          <li class="nav-item"><a href="#" class="nav-link">Bağlantılılık</a></li>
+          <li class="nav-item"><a href="#graph" class="nav-link" data-page="graph">Graf Teorisi</a></li>
+          <li class="nav-item"><a href="#connectivity" class="nav-link" data-page="connectivity">Bağlantılılık</a></li>
         </ul>
       </div>
 
       <div class="nav-section">
         <div class="nav-section-title">Security</div>
         <ul class="nav-list">
-          <li class="nav-item"><a href="#" class="nav-link">The Glass Box</a></li>
+          <li class="nav-item"><a href="#glassbox" class="nav-link" data-page="glassbox">The Glass Box</a></li>
         </ul>
       </div>
 
@@ -437,42 +447,207 @@
         <header class="file-header">
           <div class="file-meta">
             <span class="file-meta-label">FILE NO.</span>
-            <span class="file-meta-value">Hakkımda</span>
+            <span class="file-meta-value" id="fileNo">—</span>
           </div>
-          <div class="stamp">ARCHIVED</div>
+          <div class="stamp" id="stamp">ARCHIVED</div>
         </header>
 
-        <article class="about">
-          <p>
-            Merhaba, buraya yolun düştüyse muhtemelen sadece yazdığım kodları
-            değil, satırların arkasındaki düşünceyi ve sezgiyi de merak ediyorsundur.
-          </p>
-
-          <p>
-            Ben bir <strong>Bilgisayar Mühendisiyim</strong>. Günlerimin büyük kısmı
-            pratik problemlere çözümler üretmekle geçse de, beni asıl motive eden şey
-            teorinin, matematiğin ve soyut sistemlerin arkasındaki fikri anlamak.
-          </p>
-
-          <p>
-            Bir sistemin sadece <em>"nasıl"</em> çalıştığını bilmek bana yetmiyor;
-            neden öyle kurulduğunu, arkasındaki ispatı ve mantıksal çerçeveyi görmek
-            istiyorum. Sektörel kalıpların dışına taşıp, biraz da akademik derinlik
-            peşinde koşuyorum.
-          </p>
-
-          <p>
-            Burada paylaşacağım notlar; teknik açıklamaların, dağınık eskizlerin
-            ve bazen de Basquiat tablolarından fırlamış gibi duran fikir parçalarının
-            bir karışımı olacak. Eğer sen de öğrenmekten keyif alıyorsan, muhtemelen
-            doğru yerdesin.
-          </p>
-        </article>
+        <article class="content-page" id="content"></article>
       </div>
     </main>
   </div>
+
+  <script>
+    const pages = {
+      home: {
+        title: "Home",
+        stamp: "INDEX",
+        html: `
+          <h2>Home</h2>
+          <p>
+            Burası <strong>Knowledgebase</strong>. Kodun kendisi kadar, kodun arkasındaki
+            düşünceyi de arşivlemek için.
+          </p>
+          <p>
+            Sol menüden konular arasında gezebilirsin — sayfa yenilenmez, ama
+            <em>sayfa değişimi</em> hissi verir.
+          </p>
+          <h3>Odak</h3>
+          <div class="chips">
+            <span class="chip">Mantık</span>
+            <span class="chip">İspat</span>
+            <span class="chip">Sistem Tasarımı</span>
+            <span class="chip">Güvenlik</span>
+          </div>
+        `
+      },
+
+      about: {
+        title: "Hakkımda",
+        stamp: "ABOUT",
+        html: `
+          <h2>Hakkımda</h2>
+          <p>
+            Merhaba, buraya yolun düştüyse muhtemelen sadece yazdığım kodları değil,
+            satırların arkasındaki düşünceyi ve sezgiyi de merak ediyorsundur.
+          </p>
+          <p>
+            Ben bir <strong>Bilgisayar Mühendisiyim</strong>. Günlerimin büyük kısmı pratik
+            problemlere çözümler üretmekle geçse de, beni asıl motive eden şey teorinin,
+            matematiğin ve soyut sistemlerin arkasındaki fikri anlamak.
+          </p>
+          <p>
+            Bir sistemin sadece <em>"nasıl"</em> çalıştığını bilmek bana yetmiyor;
+            neden öyle kurulduğunu, arkasındaki ispatı ve mantıksal çerçeveyi görmek istiyorum.
+          </p>
+          <p>
+            Buradaki notlar: teknik açıklamalar, dağınık eskizler ve bazen de
+            Basquiat’tan fırlamış gibi duran fikir parçaları olacak.
+          </p>
+        `
+      },
+
+      proof: {
+        title: "Kanıt Nedir?",
+        stamp: "PROOF",
+        html: `
+          <h2>Kanıt Nedir?</h2>
+          <p>
+            Kanıt (proof), bir önermeyi doğru yapan şeyin <strong>zorunlu</strong> mantıksal
+            ilişkilerle gösterilmesidir. “İnanıyorum” değil, “sonuç kaçınılmaz” demektir.
+          </p>
+          <p>
+            Bir kanıt genelde şu parçaları içerir: <code>tanımlar</code>, <code>aksiyomlar</code>,
+            daha önce kanıtlanmış <code>lemmalar</code> ve bunlardan yürütülen çıkarımlar.
+          </p>
+          <h3>Kısa örnek (fikir)</h3>
+          <p>
+            “Eğer A ise B” türü cümlelerde kanıt çoğu zaman A’yı varsayıp B’ye
+            adım adım yürümektir.
+          </p>
+        `
+      },
+
+      inference: {
+        title: "Mantıksal Çıkarımlar",
+        stamp: "INFER",
+        html: `
+          <h2>Mantıksal Çıkarımlar</h2>
+          <p>
+            Çıkarım, verilen öncüllerden (premises) yeni bir sonuca <strong>geçerli</strong>
+            bir kural ile ulaşmaktır.
+          </p>
+          <p>
+            Örn: Modus Ponens → <code>(A → B)</code> ve <code>A</code> ise <code>B</code>.
+          </p>
+        `
+      },
+
+      iff: {
+        title: "'If and Only If'",
+        stamp: "IFF",
+        html: `
+          <h2>'If and Only If'</h2>
+          <p>
+            <strong>“Ancak ve ancak”</strong> iki yönlü koşuldur:
+            <code>A ↔ B</code> demek hem <code>A → B</code> hem de <code>B → A</code> doğru.
+          </p>
+          <p>
+            Yani iki ifade aslında aynı şeyi farklı dille söylüyor olabilir.
+          </p>
+        `
+      },
+
+      graph: {
+        title: "Graf Teorisi",
+        stamp: "GRAPH",
+        html: `
+          <h2>Graf Teorisi</h2>
+          <p>
+            Graf, düğümler (vertices) ve kenarlardan (edges) oluşur.
+            İlişkileri modellemek için en güçlü soyut araçlardan biridir.
+          </p>
+        `
+      },
+
+      connectivity: {
+        title: "Bağlantılılık",
+        stamp: "CONN",
+        html: `
+          <h2>Bağlantılılık</h2>
+          <p>
+            Bir grafın bağlantılı olması, her düğüm çiftinin arasında bir yol
+            (path) bulunmasıdır.
+          </p>
+        `
+      },
+
+      glassbox: {
+        title: "The Glass Box",
+        stamp: "SEC",
+        html: `
+          <h2>The Glass Box</h2>
+          <p>
+            Güvenlikte “cam kutu” yaklaşımı: sistemi şeffaf varsay, saldırganın
+            her şeyi bildiğini düşün ve buna rağmen güvenli tasarla.
+          </p>
+        `
+      }
+    };
+
+    const contentEl = document.getElementById("content");
+    const fileNoEl = document.getElementById("fileNo");
+    const stampEl = document.getElementById("stamp");
+    const links = [...document.querySelectorAll(".nav-link")];
+
+    function setActive(pageKey){
+      links.forEach(a => a.classList.toggle("active", a.dataset.page === pageKey));
+    }
+
+    function render(pageKey){
+      const page = pages[pageKey] || pages.about;
+
+      // header
+      fileNoEl.textContent = page.title;
+      stampEl.textContent = page.stamp;
+
+      // transition
+      contentEl.classList.add("is-leaving");
+      window.setTimeout(() => {
+        contentEl.innerHTML = page.html;
+        contentEl.classList.remove("is-leaving");
+      }, 180);
+
+      setActive(pageKey);
+    }
+
+    function pageFromHash(){
+      const raw = (location.hash || "#about").replace("#", "").trim();
+      return pages[raw] ? raw : "about";
+    }
+
+    // Clicks
+    links.forEach(a => {
+      a.addEventListener("click", (e) => {
+        // normal hash navigation is fine; just render quickly
+        const pageKey = a.dataset.page;
+        // ensure hash matches (so back/forward works)
+        if (location.hash !== "#" + pageKey) {
+          location.hash = pageKey;
+        } else {
+          render(pageKey);
+        }
+        e.preventDefault();
+      });
+    });
+
+    // Back/forward + direct link
+    window.addEventListener("hashchange", () => {
+      render(pageFromHash());
+    });
+
+    // First load
+    render(pageFromHash());
+  </script>
 </body>
 </html>
-
-
-create about page
