@@ -110,10 +110,7 @@
     .id-name{font-weight:600; letter-spacing:.01em}
     .id-role{color:rgba(234,234,240,.72); font-size:12px; margin-top:2px}
     .id-loc{color:rgba(234,234,240,.62); font-size:12px; margin-top:6px}
-    .id-links{
-      display:flex; flex-wrap:wrap; gap:8px;
-      margin-top:10px;
-    }
+    .id-links{display:flex; flex-wrap:wrap; gap:8px; margin-top:10px;}
     .pill{
       display:inline-flex; align-items:center; gap:6px;
       padding:6px 10px;
@@ -254,6 +251,54 @@
       flex-direction:column;
       align-items:flex-end;
       gap:10px;
+    }
+
+    .topbar{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      justify-content:flex-end;
+      width:100%;
+    }
+
+    /* Language switch */
+    .lang-wrap{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(234,234,240,.18);
+      background:rgba(0,0,0,.12);
+      box-shadow:3px 3px 0 rgba(0,0,0,.22);
+    }
+    .lang-dot{
+      width:10px;height:10px;border-radius:999px;
+      background:rgba(45,212,191,.92);
+      box-shadow:0 0 0 2px rgba(0,0,0,.28);
+      flex:0 0 auto;
+    }
+    .lang-select{
+      appearance:none;
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      border:none;
+      outline:none;
+      background:transparent;
+      color:rgba(234,234,240,.92);
+      font-family:"Special Elite",monospace;
+      letter-spacing:.12em;
+      font-size:12px;
+      padding-right:18px;
+      cursor:pointer;
+    }
+    .lang-caret{
+      width:0;height:0;
+      border-left:5px solid transparent;
+      border-right:5px solid transparent;
+      border-top:6px solid rgba(255,209,102,.95);
+      margin-left:-10px;
+      pointer-events:none;
     }
 
     .stamp{
@@ -425,6 +470,8 @@
       .sidebar-footer{position:static;margin-top:18px}
       .content{padding:22px 16px 28px}
       .content-inner{padding:22px 18px 24px}
+      .header-right{align-items:flex-start}
+      .topbar{justify-content:flex-start}
     }
     @media (max-width: 600px){
       .logo{font-size:12px}
@@ -432,7 +479,7 @@
       .content-page{padding-left:14px}
       .content-page h2{font-size:22px}
       .kv{grid-template-columns: 1fr}
-      .header-right{align-items:flex-start}
+      .lang-wrap{padding:6px 8px}
     }
   </style>
 </head>
@@ -441,48 +488,48 @@
   <div class="page">
     <!-- SOL NAV -->
     <aside class="sidebar">
-      <div class="logo">CV / KNOWLEDGEBASE</div>
+      <div class="logo" id="logoText">CV / KNOWLEDGEBASE</div>
 
       <div class="id-card">
         <div class="id-name">Ömer Fırat Gözütok</div>
-        <div class="id-role">Business Intelligence Specialist (Remote)</div>
-        <div class="id-loc">Ankara, Türkiye</div>
+        <div class="id-role" id="roleText">Business Intelligence Specialist (Remote)</div>
+        <div class="id-loc" id="locText">Ankara, Türkiye</div>
         <div class="id-links">
-          <a class="pill" href="mailto:omerfiratgozutokk@gmail.com" target="_blank" rel="noreferrer">E-posta</a>
-          <a class="pill" href="https://www.linkedin.com/in/omer-firat-gozutok/" target="_blank" rel="noreferrer">LinkedIn</a>
-          <a class="pill" href="https://omerfiratgozutok.github.io/qfaz7n/#" target="_blank" rel="noreferrer">GitHub Pages</a>
+          <a class="pill" href="mailto:omerfiratgozutokk@gmail.com" target="_blank" rel="noreferrer" id="mailPill">E-posta</a>
+          <a class="pill" href="https://www.linkedin.com/in/omer-firat-gozutok/" target="_blank" rel="noreferrer" id="lnPill">LinkedIn</a>
+          <a class="pill" href="https://omerfiratgozutok.github.io/qfaz7n/#" target="_blank" rel="noreferrer" id="ghpPill">GitHub Pages</a>
         </div>
       </div>
 
       <div class="nav-section">
-        <div class="nav-section-title">Genel</div>
+        <div class="nav-section-title" data-i18n="nav.general.title">Genel</div>
         <ul class="nav-list">
-          <li class="nav-item"><a href="#ana" class="nav-link" data-page="ana">Ana Sayfa</a></li>
-          <li class="nav-item"><a href="#profil" class="nav-link" data-page="profil">Profil</a></li>
+          <li class="nav-item"><a href="#ana" class="nav-link" data-page="ana" data-i18n="nav.general.home">Ana Sayfa</a></li>
+          <li class="nav-item"><a href="#profil" class="nav-link" data-page="profil" data-i18n="nav.general.profile">Profil</a></li>
         </ul>
       </div>
 
       <div class="nav-section">
-        <div class="nav-section-title">Kariyer</div>
+        <div class="nav-section-title" data-i18n="nav.career.title">Kariyer</div>
         <ul class="nav-list">
-          <li class="nav-item"><a href="#deneyim" class="nav-link" data-page="deneyim">Deneyim</a></li>
-          <li class="nav-item"><a href="#egitim" class="nav-link" data-page="egitim">Eğitim</a></li>
+          <li class="nav-item"><a href="#deneyim" class="nav-link" data-page="deneyim" data-i18n="nav.career.exp">Deneyim</a></li>
+          <li class="nav-item"><a href="#egitim" class="nav-link" data-page="egitim" data-i18n="nav.career.edu">Eğitim</a></li>
         </ul>
       </div>
 
       <div class="nav-section">
-        <div class="nav-section-title">Yetkinlik</div>
+        <div class="nav-section-title" data-i18n="nav.skills.title">Yetkinlik</div>
         <ul class="nav-list">
-          <li class="nav-item"><a href="#yetenekler" class="nav-link" data-page="yetenekler">Teknik Yetenekler</a></li>
-          <li class="nav-item"><a href="#abtest" class="nav-link" data-page="abtest">A/B Testleri</a></li>
+          <li class="nav-item"><a href="#yetenekler" class="nav-link" data-page="yetenekler" data-i18n="nav.skills.tech">Teknik Yetenekler</a></li>
+          <li class="nav-item"><a href="#abtest" class="nav-link" data-page="abtest" data-i18n="nav.skills.ab">A/B Testleri</a></li>
         </ul>
       </div>
 
       <div class="nav-section">
-        <div class="nav-section-title">Çalışmalar</div>
+        <div class="nav-section-title" data-i18n="nav.work.title">Çalışmalar</div>
         <ul class="nav-list">
-          <li class="nav-item"><a href="#projeler" class="nav-link" data-page="projeler">Projeler</a></li>
-          <li class="nav-item"><a href="#iletisim" class="nav-link" data-page="iletisim">İletişim</a></li>
+          <li class="nav-item"><a href="#projeler" class="nav-link" data-page="projeler" data-i18n="nav.work.projects">Projeler</a></li>
+          <li class="nav-item"><a href="#iletisim" class="nav-link" data-page="iletisim" data-i18n="nav.work.contact">İletişim</a></li>
         </ul>
       </div>
 
@@ -497,11 +544,23 @@
       <div class="content-inner">
         <header class="file-header">
           <div class="file-meta">
-            <span class="file-meta-label">DOSYA</span>
+            <span class="file-meta-label" id="fileLabel">DOSYA</span>
             <span class="file-meta-value" id="fileNo">—</span>
           </div>
 
           <div class="header-right">
+            <div class="topbar">
+              <!-- LANG SWITCH (Top Right) -->
+              <div class="lang-wrap" title="Language / Dil">
+                <span class="lang-dot" aria-hidden="true"></span>
+                <select class="lang-select" id="langSelect" aria-label="Language selector">
+                  <option value="tr">TR</option>
+                  <option value="en">EN</option>
+                </select>
+                <span class="lang-caret" aria-hidden="true"></span>
+              </div>
+            </div>
+
             <!-- Süs / şekil -->
             <svg class="doodle" viewBox="0 0 220 90" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M10 50 C 40 10, 70 90, 100 50 S 160 10, 210 50"
@@ -522,302 +581,640 @@
   </div>
 
   <script>
-    const pages = {
-      ana: {
-        title: "Ana Sayfa",
-        stamp: "INDEX",
-        html: `
-          <h2>Ana Sayfa</h2>
-          <p>
-            Merhaba. Ben <strong>Ömer Fırat Gözütok</strong> —
-            <strong>Business Intelligence Specialist</strong>.
-            Bu sayfa; yaptığım işleri, yaklaşımımı ve çıktıları
-            “tek ekranda, net ve gezilebilir” bir formatta toplamak için.
-          </p>
-
-          <div class="kv">
-            <div class="k">Konum</div>
-            <div class="v">Ankara, Türkiye <small>(Remote çalışma)</small></div>
-
-            <div class="k">Odak</div>
-            <div class="v">Dashboard, ETL, Otomasyon, KPI, Raporlama, Veri Modelleme</div>
-
-            <div class="k">Araçlar</div>
-            <div class="v">SQL, Python, Power BI, Qlik Sense, Oracle BI, UiPath</div>
-          </div>
-
-          <h3>Öne çıkanlar</h3>
-          <ul class="bullets">
-            <li><strong>Raporlama pipeline</strong> otomasyonları ile manuel iş yükünü düşürme (özellikle <em>Outlook’tan manuel Excel gönderimleri</em> azaldı).</li>
-            <li><strong>Power BI & Qlik Sense</strong> ile interaktif dashboard’lar ve yönetim odaklı metrik görünürlük.</li>
-            <li><strong>A/B testleri</strong> ile değişikliklerin etkisini ölçme ve kararları veriyle doğrulama.</li>
-          </ul>
-
-          <div class="chips">
-            <span class="chip">Otomasyon</span>
-            <span class="chip">ETL</span>
-            <span class="chip">KPI Takibi</span>
-            <span class="chip">Dashboard Tasarımı</span>
-            <span class="chip">Deney Tasarımı</span>
-          </div>
-        `
+    // ---- i18n base strings (sidebar labels + small UI parts) ----
+    const I18N = {
+      tr: {
+        title: "Ömer Fırat Gözütok — BI Specialist",
+        fileLabel: "DOSYA",
+        logo: "CV / KNOWLEDGEBASE",
+        role: "Business Intelligence Specialist (Remote)",
+        loc: "Ankara, Türkiye",
+        mail: "E-posta",
+        nav: {
+          general: { title: "Genel", home: "Ana Sayfa", profile: "Profil" },
+          career: { title: "Kariyer", exp: "Deneyim", edu: "Eğitim" },
+          skills: { title: "Yetkinlik", tech: "Teknik Yetenekler", ab: "A/B Testleri" },
+          work: { title: "Çalışmalar", projects: "Projeler", contact: "İletişim" }
+        }
       },
-
-      profil: {
-        title: "Profil",
-        stamp: "PROFILE",
-        html: `
-          <h2>Profil</h2>
-          <p>
-            <strong>Business Intelligence Specialist</strong> olarak
-            veri görselleştirme, ETL süreçleri ve otomasyon alanlarında çalışıyorum.
-            Amacım: raporlamayı “tek seferlik iş” olmaktan çıkarıp,
-            sürdürülebilir bir <em>ürüne</em> dönüştürmek.
-          </p>
-
-          <p>
-            SQL ve veri modelleme ile sağlam bir temel kurup,
-            Power BI / Qlik Sense gibi araçlarla karar vericinin
-            hızlı aksiyon alabileceği arayüzler tasarlıyorum.
-            Ayrıca süreçlerdeki tekrarları yakalayıp otomasyonla sadeleştirmeyi seviyorum.
-          </p>
-
-          <h3>Kısa özet</h3>
-          <ul class="bullets">
-            <li>İnteraktif dashboard + raporlama optimizasyonu</li>
-            <li>Otomasyon: <code>UiPath</code> / süreç standardizasyonu</li>
-            <li>KPI ve iş metrikleri: izleme, yorumlama, aksiyon takibi</li>
-            <li>A/B testleri: hipotez → ölçüm → öğrenim</li>
-          </ul>
-        `
-      },
-
-      deneyim: {
-        title: "Deneyim",
-        stamp: "WORK",
-        html: `
-          <h2>Deneyim</h2>
-
-          <div class="timeline">
-            <div class="card">
-              <div class="card-head">
-                <div>
-                  <div class="card-title">KKB — Turkish Credit Bureau</div>
-                  <div class="card-sub">Business Intelligence Specialist (Remote) • İstanbul / Remote</div>
-                </div>
-                <div class="tag">08.2022 — Devam</div>
-              </div>
-
-              <ul class="bullets">
-                <li>Power BI & Qlik Sense ile <strong>interaktif dashboard</strong> geliştirme; yönetim metriklerini görünür kılma.</li>
-                <li>Günlük çağrı raporlarını <strong>UiPath</strong> ile otomatikleştirme; manuel yükü azaltma (haftalık saat bazında ciddi kazanım).</li>
-                <li>Avaya CMS’den veri çıkarma, Microsoft Access üzerinden sorgulama ve <strong>Excel rapor dağıtımını</strong> otomatikleştirme.</li>
-                <li>Oracle BI ve Qlik Sense üzerinde analitik modeller; gerçek zamanlı içgörü ve trend okuma.</li>
-                <li>Geniş veri setlerinde SQL ve modelleme iyileştirmeleriyle <strong>raporlama doğruluğu</strong> ve verimlilik artışı.</li>
-                <li>Gizli raporların güvenli üretimi ve dış müşterilere dağıtımı; süreç uyumluluğunu koruma.</li>
-                <li><strong>Manuel Outlook Excel gönderimleri</strong> belirgin şekilde azaldı (otomasyon + standardizasyon).</li>
-              </ul>
-            </div>
-
-            <div class="card">
-              <div class="card-head">
-                <div>
-                  <div class="card-title">E-Ticaret Merkezim</div>
-                  <div class="card-sub">Stajyer • İstanbul</div>
-                </div>
-                <div class="tag">07.2021 — 12.2021</div>
-              </div>
-
-              <ul class="bullets">
-                <li>Excel üzerinde büyük veri setlerini temizleme ve yapılandırma; CRM verilerinde doğruluk iyileştirmeleri.</li>
-                <li>Veri analizi görevlerini hızlı tamamlayarak performans bazlı geri bildirim / prim kazanımı.</li>
-              </ul>
-            </div>
-          </div>
-        `
-      },
-
-      egitim: {
-        title: "Eğitim",
-        stamp: "EDU",
-        html: `
-          <h2>Eğitim</h2>
-
-          <div class="timeline">
-            <div class="card">
-              <div class="card-head">
-                <div>
-                  <div class="card-title">Ege Üniversitesi</div>
-                  <div class="card-sub">Lisans • İstatistik • İzmir</div>
-                </div>
-                <div class="tag">04.2014 — 09.2021</div>
-              </div>
-
-              <ul class="bullets">
-                <li>İstatistiksel düşünme, modelleme ve ölçümleme yaklaşımı.</li>
-                <li>Öğrenci topluluk katılımı (CV’de belirtildiği şekilde).</li>
-              </ul>
-            </div>
-          </div>
-        `
-      },
-
-      yetenekler: {
-        title: "Teknik Yetenekler",
-        stamp: "SKILLS",
-        html: `
-          <h2>Teknik Yetenekler</h2>
-
-          <h3>Analitik & BI</h3>
-          <div class="chips">
-            <span class="chip">Power BI</span>
-            <span class="chip">Qlik Sense</span>
-            <span class="chip">Oracle BI</span>
-            <span class="chip">Dashboard Tasarımı</span>
-            <span class="chip">KPI Takibi</span>
-            <span class="chip">Raporlama Optimizasyonu</span>
-          </div>
-
-          <h3>Veri & Otomasyon</h3>
-          <div class="chips">
-            <span class="chip">SQL</span>
-            <span class="chip">Python</span>
-            <span class="chip">ETL</span>
-            <span class="chip">UiPath</span>
-            <span class="chip">Microsoft Access</span>
-            <span class="chip">Excel Otomasyonu</span>
-          </div>
-
-          <h3>Yaklaşım</h3>
-          <ul class="bullets">
-            <li>Önce metrik / tanım netliği, sonra model, sonra görselleştirme.</li>
-            <li>Tekrarlayan iş → otomasyon; hata riski → standardizasyon.</li>
-            <li>Değişiklik → A/B testi / ölçüm → karar.</li>
-          </ul>
-        `
-      },
-
-      abtest: {
-        title: "A/B Testleri",
-        stamp: "ABTEST",
-        html: `
-          <h2>A/B Testleri</h2>
-          <p>
-            A/B testlerini, ürün/akış üzerindeki değişikliklerin gerçekten işe yarayıp yaramadığını
-            görmek için kullanıyorum. “Güzel görünüyor” yerine “ölçtük ve gördük” yaklaşımı.
-          </p>
-
-          <h3>Tipik akış</h3>
-          <ul class="bullets">
-            <li><strong>Hipotez</strong>: “X değişirse Y metriği artar/azalır.”</li>
-            <li><strong>Metriği sabitle</strong>: KPI tanımı, ölçüm penceresi, segment.</li>
-            <li><strong>Uygulama</strong>: A (kontrol) / B (varyasyon).</li>
-            <li><strong>Analiz</strong>: Etki büyüklüğü, anlamlılık, yan metrikler.</li>
-            <li><strong>Karar</strong>: Yayına al / geri dön / yeni iterasyon.</li>
-          </ul>
-
-          <h3>Not</h3>
-          <p>
-            İstersen buraya gerçek örneklerini ekleyelim:
-            <em>hangi metrik, hangi değişiklik, hangi sonuç</em>.
-          </p>
-        `
-      },
-
-      projeler: {
-        title: "Projeler",
-        stamp: "LAB",
-        html: `
-          <h2>Projeler</h2>
-          <p>
-            Buraya iki tip içerik koyabiliriz:
-            <strong>BI projeleri</strong> (dashboard, pipeline, otomasyon) ve
-            <strong>kişisel projeler</strong> (GitHub repo’ları).
-          </p>
-
-          <h3>Örnek yerleşim</h3>
-          <div class="timeline">
-            <div class="card">
-              <div class="card-head">
-                <div>
-                  <div class="card-title">Rapor Dağıtım Otomasyonu</div>
-                  <div class="card-sub">UiPath + Excel + (varsa) mail entegrasyonu</div>
-                </div>
-                <div class="tag">Case</div>
-              </div>
-              <ul class="bullets">
-                <li>Manuel gönderimleri azaltma (Outlook’tan Excel trafiğini düşürme).</li>
-                <li>Standart isimlendirme + loglama + hata yakalama.</li>
-              </ul>
-            </div>
-
-            <div class="card">
-              <div class="card-head">
-                <div>
-                  <div class="card-title">Dashboard Paketi</div>
-                  <div class="card-sub">Power BI / Qlik Sense</div>
-                </div>
-                <div class="tag">BI</div>
-              </div>
-              <ul class="bullets">
-                <li>Yönetim metrikleri: KPI’lar, trendler, alarm eşikleri.</li>
-                <li>Performans iyileştirmeleri: model sadeleştirme, ölçü optimizasyonu.</li>
-              </ul>
-            </div>
-          </div>
-
-          <p>
-            Eğer repo adlarını yazarsan (örn. <code>qfaz7n</code>, diğerleri),
-            burayı gerçek linklerle doldurayım.
-          </p>
-        `
-      },
-
-      iletisim: {
-        title: "İletişim",
-        stamp: "CONTACT",
-        html: `
-          <h2>İletişim</h2>
-          <p>
-            En hızlı: <a href="mailto:omerfiratgozutokk@gmail.com" target="_blank" rel="noreferrer">omerfiratgozutokk@gmail.com</a>
-          </p>
-
-          <div class="kv">
-            <div class="k">LinkedIn</div>
-            <div class="v"><a href="https://www.linkedin.com/in/omer-firat-gozutok/" target="_blank" rel="noreferrer">omer-firat-gozutok</a></div>
-
-            <div class="k">GitHub Pages</div>
-            <div class="v"><a href="https://omerfiratgozutok.github.io/qfaz7n/#" target="_blank" rel="noreferrer">omerfiratgozutok.github.io/qfaz7n</a></div>
-
-            <div class="k">Dil</div>
-            <div class="v">Türkçe (Ana dil), İngilizce (İleri)</div>
-          </div>
-
-          <p style="margin-top:14px;color:rgba(234,234,240,.70)">
-            Not: Telefon numarasını sayfada görünür yapmamı ister misin? (İstersen ekleriz.)
-          </p>
-        `
+      en: {
+        title: "Ömer Fırat Gözütok — BI Specialist",
+        fileLabel: "FILE",
+        logo: "CV / KNOWLEDGEBASE",
+        role: "Business Intelligence Specialist (Remote)",
+        loc: "Ankara, Türkiye",
+        mail: "Email",
+        nav: {
+          general: { title: "General", home: "Home", profile: "Profile" },
+          career: { title: "Career", exp: "Experience", edu: "Education" },
+          skills: { title: "Skills", tech: "Technical Skills", ab: "A/B Testing" },
+          work: { title: "Work", projects: "Projects", contact: "Contact" }
+        }
       }
     };
 
-    const contentEl = document.getElementById("content");
-    const fileNoEl   = document.getElementById("fileNo");
-    const stampEl    = document.getElementById("stamp");
-    const links      = [...document.querySelectorAll(".nav-link")];
+    // ---- Pages (TR/EN full content) ----
+    const PAGES = {
+      ana: {
+        stamp: { tr: "INDEX", en: "INDEX" },
+        title: { tr: "Ana Sayfa", en: "Home" },
+        html: {
+          tr: `
+            <h2>Ana Sayfa</h2>
+            <p>
+              Merhaba. Ben <strong>Ömer Fırat Gözütok</strong> —
+              <strong>Business Intelligence Specialist</strong>.
+              Bu sayfa; yaptığım işleri, yaklaşımımı ve çıktıları
+              “tek ekranda, net ve gezilebilir” bir formatta toplamak için.
+            </p>
+
+            <div class="kv">
+              <div class="k">Konum</div>
+              <div class="v">Ankara, Türkiye <small>(Remote çalışma)</small></div>
+
+              <div class="k">Odak</div>
+              <div class="v">Dashboard, ETL, Otomasyon, KPI, Raporlama, Veri Modelleme</div>
+
+              <div class="k">Araçlar</div>
+              <div class="v">SQL, Python, Power BI, Qlik Sense, Oracle BI, UiPath</div>
+            </div>
+
+            <h3>Öne çıkanlar</h3>
+            <ul class="bullets">
+              <li><strong>BI Specialist</strong> unvanı aynı şekilde kalır.</li>
+              <li><strong>Raporlama pipeline</strong> otomasyonları ile manuel iş yükünü düşürme (özellikle <em>Outlook’tan manuel Excel gönderimleri</em> azaldı).</li>
+              <li><strong>Power BI &amp; Qlik Sense</strong> ile interaktif dashboard’lar ve yönetim odaklı metrik görünürlük.</li>
+              <li><strong>A/B testleri</strong> ile değişikliklerin etkisini ölçme ve kararları veriyle doğrulama.</li>
+            </ul>
+
+            <div class="chips">
+              <span class="chip">Otomasyon</span>
+              <span class="chip">ETL</span>
+              <span class="chip">KPI Takibi</span>
+              <span class="chip">Dashboard Tasarımı</span>
+              <span class="chip">Deney Tasarımı</span>
+            </div>
+          `,
+          en: `
+            <h2>Home</h2>
+            <p>
+              Hi. I’m <strong>Ömer Fırat Gözütok</strong> —
+              a <strong>Business Intelligence Specialist</strong>.
+              This page is a compact “browseable hub” that summarizes my work,
+              approach, and outcomes in one place.
+            </p>
+
+            <div class="kv">
+              <div class="k">Location</div>
+              <div class="v">Ankara, Türkiye <small>(Remote)</small></div>
+
+              <div class="k">Focus</div>
+              <div class="v">Dashboards, ETL, Automation, KPIs, Reporting, Data Modeling</div>
+
+              <div class="k">Tools</div>
+              <div class="v">SQL, Python, Power BI, Qlik Sense, Oracle BI, UiPath</div>
+            </div>
+
+            <h3>Highlights</h3>
+            <ul class="bullets">
+              <li>The title <strong>BI Specialist</strong> remains as-is.</li>
+              <li>Reduced manual reporting workload via <strong>reporting pipeline automation</strong> (notably, <em>manual Excel sending from Outlook</em> decreased).</li>
+              <li>Built interactive <strong>Power BI &amp; Qlik Sense</strong> dashboards for management-level visibility.</li>
+              <li>Run <strong>A/B tests</strong> to validate changes with data (not opinions).</li>
+            </ul>
+
+            <div class="chips">
+              <span class="chip">Automation</span>
+              <span class="chip">ETL</span>
+              <span class="chip">KPI Monitoring</span>
+              <span class="chip">Dashboard Design</span>
+              <span class="chip">Experiment Design</span>
+            </div>
+          `
+        }
+      },
+
+      profil: {
+        stamp: { tr: "PROFILE", en: "PROFILE" },
+        title: { tr: "Profil", en: "Profile" },
+        html: {
+          tr: `
+            <h2>Profil</h2>
+            <p>
+              <strong>Business Intelligence Specialist</strong> olarak
+              veri görselleştirme, ETL süreçleri ve otomasyon alanlarında çalışıyorum.
+              Amacım: raporlamayı “tek seferlik iş” olmaktan çıkarıp,
+              sürdürülebilir bir <em>ürüne</em> dönüştürmek.
+            </p>
+
+            <p>
+              SQL ve veri modelleme ile sağlam bir temel kurup,
+              Power BI / Qlik Sense gibi araçlarla karar vericinin
+              hızlı aksiyon alabileceği arayüzler tasarlıyorum.
+              Ayrıca süreçlerdeki tekrarları yakalayıp otomasyonla sadeleştirmeyi seviyorum.
+            </p>
+
+            <h3>Kısa özet</h3>
+            <ul class="bullets">
+              <li>İnteraktif dashboard + raporlama optimizasyonu</li>
+              <li>Otomasyon: <code>UiPath</code> / süreç standardizasyonu</li>
+              <li>KPI ve iş metrikleri: izleme, yorumlama, aksiyon takibi</li>
+              <li>A/B testleri: hipotez → ölçüm → öğrenim</li>
+            </ul>
+          `,
+          en: `
+            <h2>Profile</h2>
+            <p>
+              I work as a <strong>Business Intelligence Specialist</strong> with a focus on
+              data visualization, ETL processes, and automation.
+              My goal is to turn reporting from a “one-off task” into a sustainable <em>product</em>.
+            </p>
+
+            <p>
+              I build solid foundations with SQL and data modeling, then design dashboards in tools
+              like Power BI / Qlik Sense so decision-makers can act quickly.
+              I also enjoy simplifying repetitive work through automation.
+            </p>
+
+            <h3>Quick summary</h3>
+            <ul class="bullets">
+              <li>Interactive dashboards + reporting optimization</li>
+              <li>Automation: <code>UiPath</code> / process standardization</li>
+              <li>KPIs & business metrics: monitoring, interpretation, action tracking</li>
+              <li>A/B testing: hypothesis → measurement → learning</li>
+            </ul>
+          `
+        }
+      },
+
+      deneyim: {
+        stamp: { tr: "WORK", en: "WORK" },
+        title: { tr: "Deneyim", en: "Experience" },
+        html: {
+          tr: `
+            <h2>Deneyim</h2>
+
+            <div class="timeline">
+              <div class="card">
+                <div class="card-head">
+                  <div>
+                    <div class="card-title">KKB — Turkish Credit Bureau</div>
+                    <div class="card-sub">Business Intelligence Specialist (Remote) • İstanbul / Remote</div>
+                  </div>
+                  <div class="tag">08.2022 — Devam</div>
+                </div>
+
+                <ul class="bullets">
+                  <li>Power BI &amp; Qlik Sense ile <strong>interaktif dashboard</strong> geliştirme; yönetim metriklerini görünür kılma.</li>
+                  <li>Günlük çağrı raporlarını <strong>UiPath</strong> ile otomatikleştirme; manuel yükü azaltma.</li>
+                  <li>Avaya CMS’den veri çıkarma, Microsoft Access üzerinden sorgulama ve <strong>Excel rapor dağıtımını</strong> otomatikleştirme.</li>
+                  <li>Oracle BI ve Qlik Sense üzerinde analitik modeller; trend okuma ve karar desteği.</li>
+                  <li>Geniş veri setlerinde SQL ve modelleme iyileştirmeleriyle <strong>raporlama doğruluğu</strong> ve verimlilik artışı.</li>
+                  <li><strong>Manuel Outlook Excel gönderimleri</strong> belirgin şekilde azaldı (otomasyon + standardizasyon).</li>
+                </ul>
+              </div>
+
+              <div class="card">
+                <div class="card-head">
+                  <div>
+                    <div class="card-title">E-Ticaret Merkezim</div>
+                    <div class="card-sub">Stajyer • İstanbul</div>
+                  </div>
+                  <div class="tag">07.2021 — 12.2021</div>
+                </div>
+
+                <ul class="bullets">
+                  <li>Excel’de veri temizleme ve yapılandırma; CRM verilerinde doğruluk iyileştirmeleri.</li>
+                  <li>Veri analizi görevlerini hızlı tamamlayarak performans bazlı geri bildirim.</li>
+                </ul>
+              </div>
+            </div>
+          `,
+          en: `
+            <h2>Experience</h2>
+
+            <div class="timeline">
+              <div class="card">
+                <div class="card-head">
+                  <div>
+                    <div class="card-title">KKB — Turkish Credit Bureau</div>
+                    <div class="card-sub">Business Intelligence Specialist (Remote) • İstanbul / Remote</div>
+                  </div>
+                  <div class="tag">Aug 2022 — Present</div>
+                </div>
+
+                <ul class="bullets">
+                  <li>Built <strong>interactive dashboards</strong> in Power BI &amp; Qlik Sense to improve management visibility.</li>
+                  <li>Automated daily call reports using <strong>UiPath</strong>, reducing manual workload.</li>
+                  <li>Extracted data from Avaya CMS, queried via Microsoft Access, and automated <strong>Excel report distribution</strong>.</li>
+                  <li>Developed analytical models in Oracle BI &amp; Qlik Sense for trend reading and decision support.</li>
+                  <li>Improved <strong>reporting accuracy</strong> and efficiency through SQL &amp; modeling enhancements.</li>
+                  <li><strong>Manual Excel sending via Outlook</strong> decreased significantly (automation + standardization).</li>
+                </ul>
+              </div>
+
+              <div class="card">
+                <div class="card-head">
+                  <div>
+                    <div class="card-title">E-Ticaret Merkezim</div>
+                    <div class="card-sub">Intern • İstanbul</div>
+                  </div>
+                  <div class="tag">Jul 2021 — Dec 2021</div>
+                </div>
+
+                <ul class="bullets">
+                  <li>Data cleaning and structuring in Excel; improved CRM data accuracy.</li>
+                  <li>Completed analytics tasks quickly; received performance-based feedback.</li>
+                </ul>
+              </div>
+            </div>
+          `
+        }
+      },
+
+      egitim: {
+        stamp: { tr: "EDU", en: "EDU" },
+        title: { tr: "Eğitim", en: "Education" },
+        html: {
+          tr: `
+            <h2>Eğitim</h2>
+
+            <div class="timeline">
+              <div class="card">
+                <div class="card-head">
+                  <div>
+                    <div class="card-title">Ege Üniversitesi</div>
+                    <div class="card-sub">Lisans • İstatistik • İzmir</div>
+                  </div>
+                  <div class="tag">04.2014 — 09.2021</div>
+                </div>
+
+                <ul class="bullets">
+                  <li>İstatistiksel düşünme, modelleme ve ölçümleme yaklaşımı.</li>
+                  <li>İlgi alanları: veri, ölçüm, deney tasarımı ve raporlama sistemleri.</li>
+                </ul>
+              </div>
+            </div>
+          `,
+          en: `
+            <h2>Education</h2>
+
+            <div class="timeline">
+              <div class="card">
+                <div class="card-head">
+                  <div>
+                    <div class="card-title">Ege University</div>
+                    <div class="card-sub">B.Sc. • Statistics • İzmir</div>
+                  </div>
+                  <div class="tag">Apr 2014 — Sep 2021</div>
+                </div>
+
+                <ul class="bullets">
+                  <li>Statistical thinking, modeling, and measurement mindset.</li>
+                  <li>Interests: data, measurement, experiment design, and reporting systems.</li>
+                </ul>
+              </div>
+            </div>
+          `
+        }
+      },
+
+      yetenekler: {
+        stamp: { tr: "SKILLS", en: "SKILLS" },
+        title: { tr: "Teknik Yetenekler", en: "Technical Skills" },
+        html: {
+          tr: `
+            <h2>Teknik Yetenekler</h2>
+
+            <h3>Analitik &amp; BI</h3>
+            <div class="chips">
+              <span class="chip">Power BI</span>
+              <span class="chip">Qlik Sense</span>
+              <span class="chip">Oracle BI</span>
+              <span class="chip">Dashboard Tasarımı</span>
+              <span class="chip">KPI Takibi</span>
+              <span class="chip">Raporlama Optimizasyonu</span>
+            </div>
+
+            <h3>Veri &amp; Otomasyon</h3>
+            <div class="chips">
+              <span class="chip">SQL</span>
+              <span class="chip">Python</span>
+              <span class="chip">ETL</span>
+              <span class="chip">UiPath</span>
+              <span class="chip">Microsoft Access</span>
+              <span class="chip">Excel Otomasyonu</span>
+            </div>
+
+            <h3>Yaklaşım</h3>
+            <ul class="bullets">
+              <li>Önce metrik / tanım netliği, sonra model, sonra görselleştirme.</li>
+              <li>Tekrarlayan iş → otomasyon; hata riski → standardizasyon.</li>
+              <li>Değişiklik → A/B testi / ölçüm → karar.</li>
+            </ul>
+          `,
+          en: `
+            <h2>Technical Skills</h2>
+
+            <h3>Analytics &amp; BI</h3>
+            <div class="chips">
+              <span class="chip">Power BI</span>
+              <span class="chip">Qlik Sense</span>
+              <span class="chip">Oracle BI</span>
+              <span class="chip">Dashboard Design</span>
+              <span class="chip">KPI Monitoring</span>
+              <span class="chip">Reporting Optimization</span>
+            </div>
+
+            <h3>Data &amp; Automation</h3>
+            <div class="chips">
+              <span class="chip">SQL</span>
+              <span class="chip">Python</span>
+              <span class="chip">ETL</span>
+              <span class="chip">UiPath</span>
+              <span class="chip">Microsoft Access</span>
+              <span class="chip">Excel Automation</span>
+            </div>
+
+            <h3>Approach</h3>
+            <ul class="bullets">
+              <li>Start with KPI definitions, then modeling, then visualization.</li>
+              <li>Repetitive work → automation; risk of errors → standardization.</li>
+              <li>Change → A/B test / measurement → decision.</li>
+            </ul>
+          `
+        }
+      },
+
+      abtest: {
+        stamp: { tr: "ABTEST", en: "ABTEST" },
+        title: { tr: "A/B Testleri", en: "A/B Testing" },
+        html: {
+          tr: `
+            <h2>A/B Testleri</h2>
+            <p>
+              A/B testlerini, ürün/akış üzerindeki değişikliklerin gerçekten işe yarayıp yaramadığını
+              görmek için kullanıyorum. “Güzel görünüyor” yerine “ölçtük ve gördük” yaklaşımı.
+            </p>
+
+            <h3>Tipik akış</h3>
+            <ul class="bullets">
+              <li><strong>Hipotez</strong>: “X değişirse Y metriği artar/azalır.”</li>
+              <li><strong>Metriği sabitle</strong>: KPI tanımı, ölçüm penceresi, segment.</li>
+              <li><strong>Uygulama</strong>: A (kontrol) / B (varyasyon).</li>
+              <li><strong>Analiz</strong>: Etki büyüklüğü, anlamlılık, yan metrikler.</li>
+              <li><strong>Karar</strong>: Yayına al / geri dön / yeni iterasyon.</li>
+            </ul>
+
+            <h3>Not</h3>
+            <p>
+              İstersen buraya gerçek örneklerini ekleyelim:
+              <em>hangi metrik, hangi değişiklik, hangi sonuç</em>.
+            </p>
+          `,
+          en: `
+            <h2>A/B Testing</h2>
+            <p>
+              I use A/B tests to verify whether a product/flow change actually works.
+              Not “it looks nicer”, but “we measured it”.
+            </p>
+
+            <h3>Typical flow</h3>
+            <ul class="bullets">
+              <li><strong>Hypothesis</strong>: “If X changes, metric Y increases/decreases.”</li>
+              <li><strong>Lock the metric</strong>: KPI definition, measurement window, segment.</li>
+              <li><strong>Implement</strong>: A (control) / B (variant).</li>
+              <li><strong>Analyze</strong>: effect size, significance, guardrail metrics.</li>
+              <li><strong>Decide</strong>: ship / rollback / iterate.</li>
+            </ul>
+
+            <h3>Note</h3>
+            <p>
+              If you want, we can add real examples here:
+              <em>which metric, which change, what result</em>.
+            </p>
+          `
+        }
+      },
+
+      projeler: {
+        stamp: { tr: "LAB", en: "LAB" },
+        title: { tr: "Projeler", en: "Projects" },
+        html: {
+          tr: `
+            <h2>Projeler</h2>
+            <p>
+              Buraya iki tip içerik koyabiliriz:
+              <strong>BI projeleri</strong> (dashboard, pipeline, otomasyon) ve
+              <strong>kişisel projeler</strong> (GitHub repo’ları).
+            </p>
+
+            <h3>Örnek yerleşim</h3>
+            <div class="timeline">
+              <div class="card">
+                <div class="card-head">
+                  <div>
+                    <div class="card-title">Rapor Dağıtım Otomasyonu</div>
+                    <div class="card-sub">UiPath + Excel + (varsa) mail entegrasyonu</div>
+                  </div>
+                  <div class="tag">Case</div>
+                </div>
+                <ul class="bullets">
+                  <li>Manuel gönderimleri azaltma (Outlook’tan Excel trafiğini düşürme).</li>
+                  <li>Standart isimlendirme + loglama + hata yakalama.</li>
+                </ul>
+              </div>
+
+              <div class="card">
+                <div class="card-head">
+                  <div>
+                    <div class="card-title">Dashboard Paketi</div>
+                    <div class="card-sub">Power BI / Qlik Sense</div>
+                  </div>
+                  <div class="tag">BI</div>
+                </div>
+                <ul class="bullets">
+                  <li>Yönetim metrikleri: KPI’lar, trendler, alarm eşikleri.</li>
+                  <li>Performans iyileştirmeleri: model sadeleştirme, ölçü optimizasyonu.</li>
+                </ul>
+              </div>
+            </div>
+
+            <p>
+              Repo adlarını yazarsan (örn. <code>qfaz7n</code>, diğerleri),
+              burayı gerçek linklerle doldurayım.
+            </p>
+          `,
+          en: `
+            <h2>Projects</h2>
+            <p>
+              We can place two types of content here:
+              <strong>BI projects</strong> (dashboards, pipelines, automation) and
+              <strong>personal projects</strong> (GitHub repos).
+            </p>
+
+            <h3>Sample layout</h3>
+            <div class="timeline">
+              <div class="card">
+                <div class="card-head">
+                  <div>
+                    <div class="card-title">Report Distribution Automation</div>
+                    <div class="card-sub">UiPath + Excel + (optional) email integration</div>
+                  </div>
+                  <div class="tag">Case</div>
+                </div>
+                <ul class="bullets">
+                  <li>Reduced manual sending (less Excel traffic via Outlook).</li>
+                  <li>Standard naming + logging + error handling.</li>
+                </ul>
+              </div>
+
+              <div class="card">
+                <div class="card-head">
+                  <div>
+                    <div class="card-title">Dashboard Pack</div>
+                    <div class="card-sub">Power BI / Qlik Sense</div>
+                  </div>
+                  <div class="tag">BI</div>
+                </div>
+                <ul class="bullets">
+                  <li>Management metrics: KPIs, trends, alert thresholds.</li>
+                  <li>Performance improvements: simpler model, optimized measures.</li>
+                </ul>
+              </div>
+            </div>
+
+            <p>
+              If you list your repo names (e.g., <code>qfaz7n</code> and others),
+              I can replace this section with real links.
+            </p>
+          `
+        }
+      },
+
+      iletisim: {
+        stamp: { tr: "CONTACT", en: "CONTACT" },
+        title: { tr: "İletişim", en: "Contact" },
+        html: {
+          tr: `
+            <h2>İletişim</h2>
+            <p>
+              En hızlı: <a href="mailto:omerfiratgozutokk@gmail.com" target="_blank" rel="noreferrer">omerfiratgozutokk@gmail.com</a>
+            </p>
+
+            <div class="kv">
+              <div class="k">LinkedIn</div>
+              <div class="v"><a href="https://www.linkedin.com/in/omer-firat-gozutok/" target="_blank" rel="noreferrer">omer-firat-gozutok</a></div>
+
+              <div class="k">GitHub Pages</div>
+              <div class="v"><a href="https://omerfiratgozutok.github.io/qfaz7n/#" target="_blank" rel="noreferrer">omerfiratgozutok.github.io/qfaz7n</a></div>
+
+              <div class="k">Dil</div>
+              <div class="v">Türkçe (Ana dil), İngilizce (İleri)</div>
+            </div>
+
+            <p style="margin-top:14px;color:rgba(234,234,240,.70)">
+              Not: Telefon numarasını sayfada görünür yapmamı ister misin? (İstersen ekleriz.)
+            </p>
+          `,
+          en: `
+            <h2>Contact</h2>
+            <p>
+              Fastest: <a href="mailto:omerfiratgozutokk@gmail.com" target="_blank" rel="noreferrer">omerfiratgozutokk@gmail.com</a>
+            </p>
+
+            <div class="kv">
+              <div class="k">LinkedIn</div>
+              <div class="v"><a href="https://www.linkedin.com/in/omer-firat-gozutok/" target="_blank" rel="noreferrer">omer-firat-gozutok</a></div>
+
+              <div class="k">GitHub Pages</div>
+              <div class="v"><a href="https://omerfiratgozutok.github.io/qfaz7n/#" target="_blank" rel="noreferrer">omerfiratgozutok.github.io/qfaz7n</a></div>
+
+              <div class="k">Language</div>
+              <div class="v">Turkish (Native), English (Advanced)</div>
+            </div>
+
+            <p style="margin-top:14px;color:rgba(234,234,240,.70)">
+              Note: Do you want your phone number visible on the page? (We can add it.)
+            </p>
+          `
+        }
+      }
+    };
+
+    // ---- State ----
+    const contentEl   = document.getElementById("content");
+    const fileNoEl    = document.getElementById("fileNo");
+    const stampEl     = document.getElementById("stamp");
+    const langSelect  = document.getElementById("langSelect");
+    const links       = [...document.querySelectorAll(".nav-link")];
+
+    const fileLabelEl = document.getElementById("fileLabel");
+    const logoTextEl  = document.getElementById("logoText");
+    const roleTextEl  = document.getElementById("roleText");
+    const locTextEl   = document.getElementById("locText");
+    const mailPillEl  = document.getElementById("mailPill");
+
+    // Sidebar section titles have data-i18n but are not links
+    const i18nEls = [...document.querySelectorAll("[data-i18n]")];
+
+    function getSavedLang(){
+      const saved = localStorage.getItem("qfaz_lang");
+      return (saved === "en" || saved === "tr") ? saved : "tr";
+    }
+
+    function setLang(lang){
+      const safe = (lang === "en") ? "en" : "tr";
+      localStorage.setItem("qfaz_lang", safe);
+      langSelect.value = safe;
+
+      // Update <html lang=""> + <title>
+      document.documentElement.lang = safe;
+      document.title = I18N[safe].title;
+
+      // Small UI strings
+      fileLabelEl.textContent = I18N[safe].fileLabel;
+      logoTextEl.textContent  = I18N[safe].logo;
+      roleTextEl.textContent  = I18N[safe].role;
+      locTextEl.textContent   = I18N[safe].loc;
+      mailPillEl.textContent  = I18N[safe].mail;
+
+      // Update nav labels / section titles
+      i18nEls.forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        const txt = resolveI18nKey(I18N[safe], key);
+        if (typeof txt === "string") el.textContent = txt;
+      });
+
+      // Re-render current page in selected language
+      render(pageFromHash(), safe, true);
+    }
+
+    function resolveI18nKey(obj, key){
+      // e.g., "nav.general.home"
+      return key.split(".").reduce((acc, k) => acc && acc[k], obj);
+    }
 
     function setActive(pageKey){
       links.forEach(a => a.classList.toggle("active", a.dataset.page === pageKey));
     }
 
-    function render(pageKey){
-      const page = pages[pageKey] || pages.ana;
+    function render(pageKey, lang, keepTransition){
+      const safeLang = (lang === "en") ? "en" : "tr";
+      const page = PAGES[pageKey] || PAGES.ana;
 
-      fileNoEl.textContent = page.title;
-      stampEl.textContent  = page.stamp;
+      fileNoEl.textContent = page.title[safeLang] || page.title.tr;
+      stampEl.textContent  = page.stamp[safeLang] || page.stamp.tr;
+
+      if (!keepTransition){
+        contentEl.innerHTML = page.html[safeLang] || page.html.tr;
+        setActive(pageKey);
+        return;
+      }
 
       contentEl.classList.add("is-leaving");
       window.setTimeout(() => {
-        contentEl.innerHTML = page.html;
+        contentEl.innerHTML = page.html[safeLang] || page.html.tr;
         contentEl.classList.remove("is-leaving");
       }, 180);
 
@@ -826,20 +1223,31 @@
 
     function pageFromHash(){
       const raw = (location.hash || "#ana").replace("#", "").trim();
-      return pages[raw] ? raw : "ana";
+      return PAGES[raw] ? raw : "ana";
     }
 
+    // Nav click
     links.forEach(a => {
       a.addEventListener("click", (e) => {
         const pageKey = a.dataset.page;
         if (location.hash !== "#" + pageKey) location.hash = pageKey;
-        else render(pageKey);
+        else render(pageKey, getSavedLang(), true);
         e.preventDefault();
       });
     });
 
-    window.addEventListener("hashchange", () => render(pageFromHash()));
-    render(pageFromHash());
+    // Language selection
+    langSelect.addEventListener("change", () => setLang(langSelect.value));
+
+    // Hash change
+    window.addEventListener("hashchange", () => render(pageFromHash(), getSavedLang(), true));
+
+    // Init
+    (function init(){
+      const lang = getSavedLang();
+      langSelect.value = lang;
+      setLang(lang);
+    })();
   </script>
 </body>
 </html>
